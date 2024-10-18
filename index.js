@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const bibleRoutes = require('./routes/bibleRoutes');
+const serverless = require('serverless-http');
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -16,3 +18,5 @@ app.use('/api', bibleRoutes);
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+module.exports.handler = serverless(app);
