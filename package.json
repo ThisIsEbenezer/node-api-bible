@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "netlify dev",
-    "build": "netlify-lambda build src --output functions"
+    "build": "netlify-lambda build src"
   },
   "keywords": [],
   "author": "",
