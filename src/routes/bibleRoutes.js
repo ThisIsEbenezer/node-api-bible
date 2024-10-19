@@ -12,7 +12,7 @@ const readJSON = (filePath) => {
 };
 
 // Route to get the full Bible
-router.get('/bible', (req, res) => {
+router.get('/', (req, res) => {
     try {
         const booksFile = path.join(dataPath, 'Books.json');
         const booksData = readJSON(booksFile);
@@ -30,7 +30,7 @@ router.get('/bible', (req, res) => {
 });
 
 // Route to get a specific book
-router.get('/bible/:book', (req, res) => {
+router.get('/:book', (req, res) => {
     const { book } = req.params;
     try {
         const bookFilePath = path.join(dataPath, `${book}.json`);
@@ -38,12 +38,13 @@ router.get('/bible/:book', (req, res) => {
         res.json(bookData);
     } catch (error) {
         console.error(`Error fetching the book ${book}:`, error);
-        res.status(500).json({ error: `Error fetching the book ${book}` });
+        //res.status(500).json({ error: `Error fetching the book ${book}` });
+        res.status(500).json({ error: `Error fetching the book ${error}` });
     }
 });
 
 // Route to get a specific chapter in a book
-router.get('/bible/:book/:chapter', (req, res) => {
+router.get('/:book/:chapter', (req, res) => {
     const { book, chapter } = req.params;
     try {
         const bookFilePath = path.join(dataPath, `${book}.json`);
@@ -62,7 +63,7 @@ router.get('/bible/:book/:chapter', (req, res) => {
 });
 
 // Route to get a specific verse in a chapter of a book
-router.get('/bible/:book/:chapter/:verse', (req, res) => {
+router.get('/:book/:chapter/:verse', (req, res) => {
     const { book, chapter, verse } = req.params;
     try {
         const bookFilePath = path.join(dataPath, `${book}.json`);
