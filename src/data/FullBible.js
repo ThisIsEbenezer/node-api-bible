@@ -1,5 +1,5 @@
 const Genesis = require('./Splited/Genesis');
-const Exodus = require('./Splited/Exodus');
+//const Exodus = require('./Splited/Exodus');
 /*
 const Leviticus = require('./Splited/Leviticus');
 const Numbers = require('./Splited/Numbers');
@@ -65,76 +65,12 @@ const SecondJohn = require('./Splited/2_John'); // Changed to use underscore
 const ThirdJohn = require('./Splited/3_John'); // Changed to use underscore
 const Jude = require('./Splited/Jude');
 */
-const Revelation = require('./Splited/Revelation');
+//const Revelation = require('./Splited/Revelation');
 
 // Create the FullBible array
 const FullBible = [
   Genesis,
-  Exodus, /*
-  Leviticus,
-  Numbers,
-  Deuteronomy,
-  Joshua,
-  Judges,
-  Ruth,
-  FirstSamuel,
-  SecondSamuel,
-  FirstKings,
-  SecondKings,
-  FirstChronicles,
-  SecondChronicles,
-  Ezra,
-  Nehemiah,
-  Esther,
-  Job,
-  Psalms,
-  Proverbs,
-  Ecclesiastes,
-  SongofSongs,
-  Isaiah,
-  Jeremiah,
-  Lamentations,
-  Ezekiel,
-  Daniel,
-  Hosea,
-  Joel,
-  Amos,
-  Obadiah,
-  Jonah,
-  Micah,
-  Nahum,
-  Habakkuk,
-  Zephaniah,
-  Haggai,
-  Zechariah,
-  Malachi,
-  Matthew,
-  Mark,
-  Luke,
-  John,
-  Acts,
-  Romans,
-  FirstCorinthians,
-  SecondCorinthians,
-  Galatians,
-  Ephesians,
-  Philippians,
-  Colossians,
-  FirstThessalonians,
-  SecondThessalonians,
-  FirstTimothy,
-  SecondTimothy,
-  Titus,
-  Philemon,
-  Hebrews,
-  James,
-  FirstPeter,
-  SecondPeter,
-  FirstJohn,
-  SecondJohn,
-  ThirdJohn,
-  Jude, */
-  Revelation,
+ 
 ];
 
 // Export the FullBible array
