@@ -1,28 +1,12 @@
 const express = require('express');
-const fs = require('fs');
-const path = require('path');
 const router = express.Router();
-
-// Path to your JSON files directory
-const dataPath = path.join(__dirname, './');
-
-// Helper function to read JSON files
-const readJSON = (filePath) => {
-    return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-};
+const Books = require('../data/Books'); // Adjust the path as needed
+const FullBible = require('../data/FullBible'); // Adjust the path as needed
 
 // Route to get the full Bible
-router.get('/book/', (req, res) => {
+router.get('/bible', (req, res) => {
     try {
-        const booksFile = path.join(dataPath, 'Books.json');
-        const booksData = readJSON(booksFile);
-
-        const fullBible = booksData.map((bookEntry) => {
-            const bookFilePath = path.join(dataPath, `${bookEntry.book.english}.json`);
-            return readJSON(bookFilePath);
-        });
-
-        res.json(fullBible);
+        res.json(FullBible);
     } catch (error) {
         console.error('Error fetching the Bible:', error);
         res.status(500).json({ error: 'Error fetching the Bible' });
@@ -33,13 +17,16 @@ router.get('/book/', (req, res) => {
 router.get('/bible/:book', (req, res) => {
     const { book } = req.params;
     try {
-        const bookFilePath = path.join(dataPath, `${book}.json`);
-        const bookData = readJSON(bookFilePath);
+        const bookData = FullBible.find((entry) => entry.book.english.toLowerCase() === book.toLowerCase());
+
+        if (!bookData) {
+            return res.status(404).json({ error: 'Book not found' });
+        }
+
         res.json(bookData);
     } catch (error) {
         console.error(`Error fetching the book ${book}:`, error);
-        //res.status(500).json({ error: `Error fetching the book ${book}` });
-        res.status(500).json({ error: `Error fetching the book ${error}` });
+        res.status(500).json({ error: `Error fetching the book ${book}` });
     }
 });
 
@@ -47,8 +34,12 @@ router.get('/bible/:book', (req, res) => {
 router.get('/bible/:book/:chapter', (req, res) => {
     const { book, chapter } = req.params;
     try {
-        const bookFilePath = path.join(dataPath, `${book}.json`);
-        const bookData = readJSON(bookFilePath);
+        const bookData = FullBible.find((entry) => entry.book.english.toLowerCase() === book.toLowerCase());
+
+        if (!bookData) {
+            return res.status(404).json({ error: 'Book not found' });
+        }
+
         const chapterData = bookData.chapters.find((ch) => ch.chapter === chapter);
 
         if (!chapterData) {
@@ -66,8 +57,12 @@ router.get('/bible/:book/:chapter', (req, res) => {
 router.get('/bible/:book/:chapter/:verse', (req, res) => {
     const { book, chapter, verse } = req.params;
     try {
-        const bookFilePath = path.join(dataPath, `${book}.json`);
-        const bookData = readJSON(bookFilePath);
+        const bookData = FullBible.find((entry) => entry.book.english.toLowerCase() === book.toLowerCase());
+
+        if (!bookData) {
+            return res.status(404).json({ error: 'Book not found' });
+        }
+
         const chapterData = bookData.chapters.find((ch) => ch.chapter === chapter);
 
         if (!chapterData) {
@@ -88,22 +83,21 @@ router.get('/bible/:book/:chapter/:verse', (req, res) => {
 });
 
 // Route to get books with chapter details for dropdown
-router.get('/bible/books-with-chapters', (req, res) => {
+router.get('/books-with-chapters', (req, res) => {
     try {
-        const booksFile = path.join(dataPath, 'Books.json');
-        const booksData = readJSON(booksFile);
-
-        const booksWithChapters = booksData.map((bookEntry) => {
+        const booksWithChapters = Books.map((bookEntry) => {
             const bookEnglish = bookEntry.book.english;
-            const bookFilePath = path.join(dataPath, `${bookEnglish}.json`);
-            const bookContent = readJSON(bookFilePath);
-            const chapters = bookContent.chapters.map((chapter) => chapter.chapter);
+            const bookData = FullBible.find((entry) => entry.book.english === bookEnglish);
 
-            return {
-                name: bookEnglish,
-                chapters,
-            };
-        });
+            if (bookData) {
+                const chapters = bookData.chapters.map((chapter) => chapter.chapter);
+                return {
+                    name: bookEnglish,
+                    chapters,
+                };
+            }
+            return null; // In case the book data isn't found
+        }).filter(Boolean); // Filter out any null entries
 
         res.json(booksWithChapters);
     } catch (error) {
