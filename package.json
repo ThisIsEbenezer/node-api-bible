@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development ./node_modules/.bin/netlify-lambda serve src",
-    "build": "NODE_ENV=production ./node_modules/.bin/netlify-lambda build src"
+    "build": "netlify deploy --prod"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +15,7 @@
     "express": "^4.21.1",
     "fs": "0.0.1-security",
     "path": "^0.12.7",
+      "netlify-cli": "^12.7.2",
       "netlify-lambda": "^2.0.15",
       "serverless-http": "^2.7.0"
 
