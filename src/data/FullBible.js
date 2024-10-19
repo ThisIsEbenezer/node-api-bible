@@ -19,7 +19,7 @@ const Job = require('./Splited/Job');
 const Psalms = require('./Splited/Psalms');
 const Proverbs = require('./Splited/Proverbs');
 const Ecclesiastes = require('./Splited/Ecclesiastes');
-const SongofSongs = require('./Splited/Song_of_Songs'); // Changed to use underscore
+const SongofSongs = require('./Splited/SongofSongs');
 const Isaiah = require('./Splited/Isaiah');
 const Jeremiah = require('./Splited/Jeremiah');
 const Lamentations = require('./Splited/Lamentations');
@@ -88,7 +88,7 @@ const FullBible = [
   Psalms,
   Proverbs,
   Ecclesiastes,
-  SongOfSongs,
+  SongofSongs,
   Isaiah,
   Jeremiah,
   Lamentations,
