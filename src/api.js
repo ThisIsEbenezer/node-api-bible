@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const bibleRoutes = require('./routes/bibleRoutes');
+const bibleRoutes = require('./bibleRoutes');
 const serverless = require('serverless-http');
 
 
