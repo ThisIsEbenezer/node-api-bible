@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 // API Routes
-app.use('/.netlify/functions/api', bibleRoutes);
+app.use('/api', bibleRoutes);
 
 // Start the server
 // app.listen(PORT, () => {
