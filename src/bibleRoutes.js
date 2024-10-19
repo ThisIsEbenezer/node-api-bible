@@ -11,6 +11,23 @@ const readJSON = (filePath) => {
     return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 };
 
+// Example route to get the list of books
+router.get('/books', (req, res) => {
+    const filePath = path.resolve(__dirname, '../data/Books.json'); // Correctly resolve the path
+
+    // Debugging output
+    console.log(`Looking for file at: ${filePath}`);
+
+    // Check if the file exists
+    if (fs.existsSync(filePath)) {
+        const booksData = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+        res.json(booksData);
+    } else {
+        //res.status(404).json({ error: "Books file not found" });
+        res.status(404).json({ error: `Error fetching the Bible ${filePath}` });
+    }
+});
+
 // Route to get the full Bible
 router.get('/', (req, res) => {
     try {
