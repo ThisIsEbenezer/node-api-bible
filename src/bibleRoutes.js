@@ -25,7 +25,8 @@ router.get('/', (req, res) => {
         res.json(fullBible);
     } catch (error) {
         console.error('Error fetching the Bible:', error);
-        res.status(500).json({ error: 'Error fetching the Bible' });
+       // res.status(500).json({ error: 'Error fetching the Bible' });
+        res.status(500).json({ error: `Error fetching the Bible ${error}` });
     }
 });
 
