@@ -1,5 +1,6 @@
 const Genesis = require('./Splited/Genesis');
 const Exodus = require('./Splited/Exodus');
+/*
 const Leviticus = require('./Splited/Leviticus');
 const Numbers = require('./Splited/Numbers');
 const Deuteronomy = require('./Splited/Deuteronomy');
@@ -63,12 +64,13 @@ const FirstJohn = require('./Splited/1_John'); // Changed to use underscore
 const SecondJohn = require('./Splited/2_John'); // Changed to use underscore
 const ThirdJohn = require('./Splited/3_John'); // Changed to use underscore
 const Jude = require('./Splited/Jude');
+*/
 const Revelation = require('./Splited/Revelation');
 
 // Create the FullBible array
 const FullBible = [
   Genesis,
-  Exodus,
+  Exodus, /*
   Leviticus,
   Numbers,
   Deuteronomy,
@@ -131,7 +133,7 @@ const FullBible = [
   FirstJohn,
   SecondJohn,
   ThirdJohn,
-  Jude,
+  Jude, */
   Revelation,
 ];
 
