@@ -4,20 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development ./node_modules/.bin/netlify-lambda serve src",
-    "build": "NODE_ENV=production ./node_modules/.bin/netlify-lambda build src"
+    "start": "netlify dev",
+    "build": "netlify-lambda build src --output functions"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "cros": "^1.0.1",
     "express": "^4.21.1",
     "fs": "0.0.1-security",
     "path": "^0.12.7",
-      "netlify-lambda": "^2.0.15",
-      "serverless-http": "^2.7.0"
-
+    "netlify-lambda": "^2.0.15",
+    "serverless-http": "^2.7.0"
   }
 }
