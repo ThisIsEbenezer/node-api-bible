@@ -4,7 +4,7 @@ const path = require('path');
 const router = express.Router();
 
 // Path to your JSON files directory
-const dataPath = path.join(__dirname, 'src/data/');
+const dataPath = path.join(__dirname, './');
 
 // Helper function to read JSON files
 const readJSON = (filePath) => {
@@ -13,7 +13,7 @@ const readJSON = (filePath) => {
 
 // Example route to get the list of books
 router.get('/books', (req, res) => {
-    const filePath = path.resolve(__dirname, '../data/Books.json'); // Correctly resolve the path
+    const filePath = path.resolve(__dirname, './Books.json'); // Correctly resolve the path
 
     // Debugging output
     console.log(`Looking for file at: ${filePath}`);
