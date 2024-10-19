@@ -13,7 +13,7 @@ app.use(express.json());
 
 // API Routes
 //app.use('/api', bibleRoutes);
-app.use('/.netlify/functions/api/bible', bibleRoutes);
+app.use('/.netlify/functions/api', bibleRoutes);
 
 // Start the server
 // app.listen(PORT, () => {
