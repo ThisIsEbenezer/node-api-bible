@@ -4,7 +4,7 @@ const path = require('path');
 const router = express.Router();
 
 // Path to your JSON files directory
-const dataPath = path.join(__dirname, './');
+const dataPath = path.join(__dirname, '');
 
 // Helper function to read JSON files
 const readJSON = (filePath) => {
